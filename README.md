@@ -1,6 +1,10 @@
 # jscout
 
-Jscout is a lightweight utility designed to help you traverse JSON structures to find the first matching key and return its value. With its simple API, you can easily search deeply nested JSON objects or arrays for the data you need.
+Jscout is a utility designed to make everyday JSON work easier. It allows you to traverse JSON structures, update values effortlessly, check JSON validity, and even correct invalid JSON formats. With its straightforward API, it simplifies searching and manipulating deeply nested JSON objects or arrays for specific data.
+
+## Contributing
+
+If you have ideas for making JSON operations even easier, feel free to submit a pull request on GitHub. Contributions are always welcome!
 
 ## Installation
 
@@ -63,52 +67,53 @@ const sampleJson = {
   ],
 };
 
-// Finding the first occurrence of 'city'
+// Example 1: Finding the first occurrence of 'city'
 const city = jscout.find(sampleJson, "city");
 console.log("City:", city); // Output: 'Wonderland'
 
-// Finding the first occurrence of 'name'
+// Example 2: Finding the first occurrence of 'name'
 const hobbyName = jscout.find(sampleJson, "name");
 console.log("First name occurrence:", hobbyName); // Output: 'Alice'
-```
 
-### API
+// Example 3: Updating the 'city' field
+jscout.update(sampleJson, "city", "New Wonderland");
+console.log("Updated city:", sampleJson.address.city); // Output: 'New Wonderland'
 
-#### `jscout.find(json: JSONObject, fieldName: string): JSONValue | undefined`
+// Example 4: Validating a JSON string
+const validJsonString = '{"name": "Alice", "age": 25}';
+const invalidJsonString = '{name: "Alice", age: 25}';
 
-- **`json`**: The JSON object or array you want to search.
-- **`fieldName`**: The key you are searching for.
+console.log(
+  "Is valid JSON (validJsonString):",
+  jscout.isValid(validJsonString)
+); // Output: true
+console.log(
+  "Is valid JSON (invalidJsonString):",
+  jscout.isValid(invalidJsonString)
+); // Output: false
 
-**Returns**: The value of the key if found, otherwise `undefined`.
+// Example 5: Fixing a malformed JSON string
+const brokenJsonString = `
+"name": ""Alice"", 
+"age": 25, 
+"address": {
+    "street": ""123 Main St"",
+    "city": "Wonderland",
+    "zipcode": "12345"
+,
+"contact": {
+    "email": ""alice@example.com"",
+    "phone": ""555-1234""
+}
+`;
 
-### Example with Nested Arrays
-
-```javascript
-const data = {
-  users: [
-    {
-      id: 1,
-      profile: {
-        name: "Bob",
-        location: {
-          city: "Atlantis",
-        },
-      },
-    },
-    {
-      id: 2,
-      profile: {
-        name: "Carol",
-        location: {
-          city: "El Dorado",
-        },
-      },
-    },
-  ],
-};
-
-const city = jscout.find(data, "city");
-console.log("City:", city); // Output: 'Atlantis'
+try {
+  const fixedJson = jscout.fix(brokenJsonString);
+  console.log("Fixed JSON:", fixedJson);
+  // Output: Corrected JSON object
+} catch (error) {
+  console.error("Could not fix JSON:", error.message);
+}
 ```
 
 ### Handling Complex Structures
@@ -118,10 +123,6 @@ console.log("City:", city); // Output: 'Atlantis'
 ## License
 
 Jscout is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for more details.
-
-## Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/DaniilPak/jscout).
 
 ## Contact
 
