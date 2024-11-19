@@ -1,7 +1,7 @@
 {
-  "name": "jscout",
-  "version": "3.24.6",
-  "description": "Jscout aims to make everyday operations with JSON easier",
+  "name": "kruza",
+  "version": "0.0.4",
+  "description": "Lightweight UFC champion, wrong text, lightweight logger that shows where logs come from",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,6 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "type": "module",
   "scripts": {
     "build": "tsc --declaration && rollup -c",
     "test": "jest"

@@ -1,17 +1,11 @@
-// jscout.ts
+// index.ts
 
-import { find } from "./find";
-import { update } from "./update";
-import { isValid } from "./isValid";
-import { fix } from "./fix";
-import { IJscout } from "./jscout.interface";
+import { IKruza } from "./kruza.interface";
+import { log } from "./log";
 
-const jscout: IJscout = {
-  find,
-  update,
-  isValid,
-  fix,
+const kruza: IKruza = {
+  log
 };
 
-export default jscout;
-export { find, update, isValid, fix };
+export default kruza;
+export { log };
