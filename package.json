@@ -1,6 +1,6 @@
 {
   "name": "kruza",
-  "version": "0.0.8",
+  "version": "0.1.9",
   "description": "Lightweight UFC champion, wrong text, lightweight logger that shows where logs come from",
   "main": "./dist/index.cjs",
   "module": "dist/index.esm.js",
