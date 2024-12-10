@@ -2,7 +2,7 @@
 
 ![Kruza Logo](./assets/logo.png)
 
-###
+##
 [Class.Method:location]
 
 Kruza is a utility that traces class methods and code locations. It makes logging easier with color-coded outputs that help identify where logs come from.

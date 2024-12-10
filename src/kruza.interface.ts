@@ -1,10 +1,8 @@
-
 export interface IKruza {
   /**
-   * Finds the first value for a given field name within a JSON object.
-   * @param json - The JSON object to search within.
-   * @param fieldName - The field name to search for.
-   * @returns The value associated with the field if found; otherwise, returns undefined.
+   * Logs messages to the console with caller information.
+   * Accepts multiple arguments, similar to `console.log`.
+   * @param messages - The messages to log, which can be of any type.
    */
-  log(message: string): void;
+  log(...messages: any[]): void;
 }
